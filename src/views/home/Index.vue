@@ -1,7 +1,7 @@
 <!-- 首页 -->
 <template>
   <div class="home">
-    <el-form :model="form" label-width="100px" :inline="false" size="normal">
+    <el-form :model="form" label-width="100px" :inline="false">
       <el-form-item label="保单号">
         <el-input v-model="form.contno" readonly></el-input>
       </el-form-item>
