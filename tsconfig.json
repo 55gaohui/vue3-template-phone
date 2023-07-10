@@ -5,6 +5,7 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    "declaration": true,
 
     /* Bundler mode */
     "moduleResolution": "node",
@@ -13,6 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "noEmitOnError": true,
     "jsx": "preserve", // 保留原始的 JSX 代码，不进行编译
 
     /* Linting */
@@ -21,9 +23,9 @@
     "noUnusedParameters": true, //报告函数中未使用参数的错误s
     "noFallthroughCasesInSwitch": true, //确保switch语句中的任何非空情况都包含
     "allowJs": true, //允许使用js
-    "baseUrl": ".",
-    "paths": { "@/*": ["src/*"], "#/*": ["types/*"] }, //路径映射,配合别名使用
+    "baseUrl": "./",
+    "paths": { "@/*": ["src/*"], "#/*": ["types/*"] } //路径映射,配合别名使用
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue","types/*.d.ts", "src/apis/api.ts/api.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

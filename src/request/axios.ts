@@ -2,6 +2,7 @@ import axios from 'axios'
 import type { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import type { RequestInterceptors, RequestConfig, CreateRequestConfig } from './type'
 import { handleRequestHeader, handleAuth } from './requestHandle'
+import { handleNetworkError } from './responseHandle'
 import { ElMessage } from 'element-plus'
 class Request {
   // axios 实例
@@ -45,6 +46,8 @@ class Request {
         const url = res.config.url || ''
         this.abortControllerMap.delete(url)
         // console.log('全局响应拦截器')
+        //全局请求错误
+        handleNetworkError(res.data)
         return res.data
       },
       (err: any) => {
@@ -53,7 +56,12 @@ class Request {
             type: 'error',
             message: '请求超时'
           })
+          return err
         }
+        ElMessage({
+          type: 'error',
+          message: err.msg
+        })
         return err
       }
     )

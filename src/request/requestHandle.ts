@@ -1,6 +1,6 @@
 import { InternalAxiosRequestConfig } from 'axios'
 export const handleRequestHeader = (config: InternalAxiosRequestConfig) => {
-  config.headers['appid'] = 'bd9d01ecc75dbbaaefce'
+  config.headers['Content-Type'] = 'application/json'
   return config
 }
 // 通过判断是否存在 token 判断用户登陆情况

@@ -68,7 +68,6 @@
     "useCssModule": true,
     "useCssVars": true,
     "useLink": true,
-    "useRequest": true,
     "useRoute": true,
     "useRouter": true,
     "useSlots": true,

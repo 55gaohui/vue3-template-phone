@@ -17,3 +17,14 @@ export interface RequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
 export interface CancelRequestSource {
   [index: string]: () => void
 }
+export interface IResponse<T = any> {
+  code: number
+  data: T
+  msg: string
+}
+
+// 重写返回类型
+export interface IRequestConfig<T, R> extends RequestConfig<IResponse<R>> {
+  data?: T
+  params?: T
+}

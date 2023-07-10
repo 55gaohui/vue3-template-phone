@@ -1,18 +1,7 @@
 import { AxiosResponse } from 'axios'
 import Request from './axios'
 import { TIMEOUT } from '@/config/index'
-import { RequestConfig } from './type'
-export interface IResponse<T = any> {
-  code: number
-  data: T
-  message: string
-}
-
-// 重写返回类型
-interface IRequestConfig<T, R> extends RequestConfig<IResponse<R>> {
-  data?: T
-  params?: T
-}
+import { IResponse, IRequestConfig } from './type'
 
 const request = new Request({
   baseURL: import.meta.env.VITE_BASE_URL,

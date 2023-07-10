@@ -1,5 +1,30 @@
 import { Key, expire, Result, Data, StorageCls } from '#/storage'
 import { ElLoading } from 'element-plus'
+export const isMobile = () => /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+// 获取assets静态资源
+export const getAssetsFile = (url: string) => {
+  return new URL(`../assets/${url}`, import.meta.url).href
+}
+/**
+ * 限制只能输入数字和小数点
+ * @param input 输入的字符
+ * @param maxLength 限制小数点后几位
+ * @returns 返回处理完后的字符
+ */
+export function restrictNumberInput(input: string, maxLength?: number): string {
+  const regex = /[^0-9.]/g // 匹配除数字和小数点以外的任何字符
+  let output = input.replace(regex, '') // 删除非数字和小数点字符
+  if (output.includes('.') && maxLength) {
+    // 如果包含小数点
+    const [integerPart, decimalPart] = output.split('.') // 将输入字符串分成整数和小数部分
+    output = `${integerPart.slice(0, maxLength)}.${decimalPart || ''}` // 只保留最大长度的整数部分，并将整数和小数部分重新组合
+  } else {
+    // 如果不包含小数点
+    output = output.slice(0, maxLength) // 只保留最大长度的整数部分
+  }
+  return output
+}
+//全局loading样式
 let loading: { close: () => void }
 export const showLoadingFun = () => {
   loading = ElLoading.service({

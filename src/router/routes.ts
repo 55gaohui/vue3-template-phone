@@ -7,6 +7,9 @@ const routes: RouteRecordRaw[] = [
       {
         path: '',
         name: 'Home',
+        meta: {
+          title: '移动运营服务'
+        },
         component: () => import('@/views/home/Index.vue')
       }
     ]

@@ -11,7 +11,7 @@ const useRequestExt = <TData, TParams extends unknown[], TPlugin>(
       showLoadingFun()
     },
     onFinally() {
-      // hideLoadingFun()
+      hideLoadingFun()
     }
   })
 }
